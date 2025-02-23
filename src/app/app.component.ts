@@ -1,28 +1,16 @@
-import { JsonPipe } from '@angular/common';
-import { afterNextRender, Component, inject, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { MercService } from '../services/merc.service';
-import { SwapiService } from '../services/swapi.service';
+import { MercChoiceComponent } from '../components/merc-choice/merc-choice.component';
 
 @Component({
-  imports: [RouterOutlet, FormsModule, JsonPipe],
+  imports: [MercChoiceComponent, RouterOutlet, FormsModule],
   selector: 'app-root',
   template: `
     <h1 class="text-primary">Welcome to our Star Wars App!</h1>
-    <input readonly [ngModel]="personId()" />
-    <button class="btn btn-primary" (click)="nextMerc()" type="button">Next</button>
-    <div>
-      <pre>
-personId: {{ personId() }}
-        
-  personResource loading: {{ personResource.isLoading() | json }}
-  personResource status: {{ personResource.status() | json }}
-        
-  personResource: {{ personResource.value() | json }}
-      </pre
-      >
-    </div>
+
+    <app-merc-choice class="border-secondary" />
+
     <router-outlet />
   `,
   styleUrl: './app.component.css',
@@ -33,25 +21,4 @@ personId: {{ personId() }}
 })
 export class AppComponent {
   title = 'Star Wars Merc Finder';
-
-  readonly #swapiService = inject(SwapiService);
-  readonly #mercService = inject(MercService);
-  readonly #mercOrder = this.#mercService.getMercs();
-
-  protected personId = signal('1');
-  protected personResource = this.#swapiService.peopleResource(this.personId);
-
-  constructor() {
-    afterNextRender(() => {
-      this.nextMerc();
-    });
-  }
-
-  protected nextMerc() {
-    const next = this.#mercOrder.next().value;
-
-    if (next) {
-      this.personId.set(next.toString());
-    }
-  }
 }

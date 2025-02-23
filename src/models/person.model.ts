@@ -15,4 +15,25 @@ export type Person = {
   created: string;
   edited: string;
   url: string;
+  hire_in_credits: number;
 };
+
+export const emptyPerson = (): Person => ({
+  name: 'Unknown Merc',
+  height: 'about tree fiddy',
+  mass: 'about tree fiddy',
+  hair_color: 'hot pink',
+  skin_color: 'topaz',
+  eye_color: 'celestial green',
+  birth_year: '0BBY',
+  gender: 'fluid',
+  homeworld: 'Unknown',
+  films: [],
+  species: [],
+  vehicles: [],
+  starships: [],
+  created: '',
+  edited: '',
+  url: '',
+  hire_in_credits: 0,
+});
