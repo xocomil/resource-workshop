@@ -33,6 +33,7 @@ export class SwapiService {
         }),
         map((person) => {
           person.hire_in_credits = Math.floor(Math.random() * 1000000);
+          person.id = id;
 
           return person;
         }),

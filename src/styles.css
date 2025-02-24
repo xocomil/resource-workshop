@@ -6,4 +6,6 @@
 :root {
   --merc-description-columns: minmax(min-content, max-content) 1fr
   minmax(min-content, max-content) 1fr;
+
+  --main-layout-columns: 1fr 25%;
 }

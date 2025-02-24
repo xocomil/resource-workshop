@@ -2,21 +2,25 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { MercChoiceComponent } from '../components/merc-choice/merc-choice.component';
+import { MercListComponent } from '../components/merc-list/merc-list.ng';
 
 @Component({
-  imports: [MercChoiceComponent, RouterOutlet, FormsModule],
+  imports: [FormsModule, MercChoiceComponent, MercListComponent, RouterOutlet],
   selector: 'app-root',
   template: `
-    <h1 class="text-primary">Welcome to our Star Wars App!</h1>
+    <h1 class="text-primary col-span-2">Pick your team!</h1>
 
-    <app-merc-choice class="border-secondary" />
+    @defer {
+      <app-merc-choice class="border-secondary" />
+
+      <app-merc-list />
+    }
 
     <router-outlet />
   `,
-  styleUrl: './app.component.css',
   host: {
     class:
-      'prose prose-base container mx-auto px-8 mt-4 card shadow-xl bg-base-200',
+      'container mx-auto px-4 mt-4 w-3/4 card shadow-xl bg-base-200 grid gap-2 grid-cols-[var(--main-layout-columns)]',
   },
 })
 export class AppComponent {
