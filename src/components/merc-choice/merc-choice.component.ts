@@ -45,7 +45,6 @@ import { SwapiService } from '../../services/swapi.service';
       </div>
     }
   `,
-  styleUrl: './merc-choice.component.css',
   host: {
     class: 'border border-primary p-4 flex flex-col gap-2 rounded-t-md',
   },

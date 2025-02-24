@@ -1,16 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MercChoiceNg } from './merc-choice.component';
+import { MercListComponent } from '../merc-list/merc-list.ng';
+import { MercChoiceComponent } from './merc-choice.component';
 
-describe('MercChoiceNg', () => {
-  let component: MercChoiceNg;
-  let fixture: ComponentFixture<MercChoiceNg>;
+describe(MercChoiceComponent.name, () => {
+  let component: MercChoiceComponent;
+  let fixture: ComponentFixture<MercChoiceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MercChoiceNg],
+      imports: [MercChoiceComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MercChoiceNg);
+    fixture = TestBed.createComponent(MercChoiceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
