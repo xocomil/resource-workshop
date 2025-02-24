@@ -16,6 +16,7 @@ export type Person = {
   edited: string;
   url: string;
   hire_in_credits: number;
+  id: string;
 };
 
 export const emptyPerson = (): Person => ({
@@ -36,4 +37,5 @@ export const emptyPerson = (): Person => ({
   edited: '',
   url: '',
   hire_in_credits: 0,
+  id: '',
 });

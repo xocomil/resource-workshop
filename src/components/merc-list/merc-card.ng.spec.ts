@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MercChoiceComponent } from './merc-choice.component';
+import { MercCardComponentNg } from './merc-card.ng';
 
-describe(MercChoiceComponent.name, () => {
-  let component: MercChoiceComponent;
-  let fixture: ComponentFixture<MercChoiceComponent>;
+describe('MercCardComponentNg', () => {
+  let component: MercCardComponentNg;
+  let fixture: ComponentFixture<MercCardComponentNg>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MercChoiceComponent],
+      imports: [MercCardComponentNg],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MercChoiceComponent);
+    fixture = TestBed.createComponent(MercCardComponentNg);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
