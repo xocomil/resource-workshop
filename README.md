@@ -28,9 +28,9 @@ Once the dependencies are installed, you can run the project using the following
 npx nx serve
 ```
 
-## Workshop
+# Workshop
 
-### Step 1: Clone the workshop project
+## Step 1: Clone the workshop project
 
 To get started with the workshop, you will need to clone the `step1` tag of the `workshop` branch of the repository on Github.
 
@@ -52,7 +52,7 @@ npx nx serve
 
 You will note that the buttons and project are in a default state and don't do anything.
 
-### Step 2: Add a `resource` to get people from the Star Wars API
+## Step 2: Add a `resource` to get people from the Star Wars API
 
 In the `services` directory there is a file called `swapi.service.ts`. This file contains a function that fetches people from the Star Wars API. We will use this function to get people from the API.
 
@@ -91,13 +91,13 @@ You will notice that there are a few options that we passed to the `rxResource`:
 - `loader` <strong>(required)<strong>: A required function that returns an observable. This is the function that will be called when the resource is loaded.
 - `defaultValue` <strong>(optional)<strong>: An optional default value for the resource. This is useful when you don't want your resource to potentially return `undefined`.
 
-###Task:
+### Task:
 
 1. Create the `resource` and `rxResource` in `swapi.service.ts` and return them from the `peopleResource()` and `rxPeopleResource()` functions.
 2. Use either the `resource` or `rxResource` in the `merc-choice.component.ts` to display a person from the Star Wars API.
 3. <i>Bonus:</i> Use the resource of your choice to display a loading experience.
 
-> [TIP!]
+> [!TIP]
 > You can use the `isLoading` signal from the resource to display a loading experience.
 > 
 > You can also use the `value` signal from the resource to display the person from the Star Wars API.
