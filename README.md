@@ -14,10 +14,10 @@ git clone https://github.com/xocomil/resource-workshop.git
 
 This project was created using the [Nx CLI](https://nx.dev/angular/getting-started/intro) and [Angular](https://angular.dev). To run the project, you will need to have Node.js installed on your machine. You can download Node.js from the [official website](https://nodejs.org/).
 
-After cloning the repository, navigate to the project directory and install the dependencies  using NPM.
+After cloning the repository, navigate to the project directory and install the dependencies  using NPM. We are using version 19.2 of Angular that is not part of the peer dependencies for our Nx CLI so we need to use `--legacy-peer-deps` to install the dependencies.
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
 Once the dependencies are installed, you can run the project using the following command:
