@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, resource, Signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { firstValueFrom, map } from 'rxjs';
-import { Person } from '../models/person.model';
+import { emptyPerson, Person } from '../models/person.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +14,11 @@ export class SwapiService {
   readonly #peopleUrl = `${this.#baseUrl}/people` as const;
 
   peopleResource(id: Signal<string>) {
+    return resource({
+      request: () => ({ id: id() }),
+      loader: ({ request }) => firstValueFrom(this.#getPerson(request.id)),
+      defaultValue: emptyPerson(),
+    });
   }
 
   #getPerson(id: string) {
@@ -37,5 +42,10 @@ export class SwapiService {
   }
 
   rxPeopleResource(id: Signal<string>) {
+    return rxResource({
+      request: () => ({ id: id() }),
+      loader: ({ request }) => this.#getPerson(request.id),
+      defaultValue: emptyPerson(),
+    });
   }
 }
