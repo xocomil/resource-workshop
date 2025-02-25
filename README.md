@@ -14,7 +14,9 @@ git clone https://github.com/xocomil/resource-workshop.git
 
 This project was created using the [Nx CLI](https://nx.dev/angular/getting-started/intro) and [Angular](https://angular.dev). To run the project, you will need to have Node.js installed on your machine. You can download Node.js from the [official website](https://nodejs.org/).
 
-After cloning the repository, navigate to the project directory and install the dependencies  using NPM. We are using version 19.2 of Angular that is not part of the peer dependencies for our Nx CLI so we need to use `--legacy-peer-deps` to install the dependencies.
+> [!NOTE]
+> After cloning the repository, navigate to the
+project directory and install the dependencies  using NPM. We are using version 19.2 of Angular that is not part of the peer dependencies for our Nx CLI so we need to use `--legacy-peer-deps` to install the dependencies.
 
 ```bash
 npm install --legacy-peer-deps
@@ -28,3 +30,16 @@ npx nx serve
 
 ## Workshop
 
+### Step 1: Clone the workshop project
+
+To get started with the workshop, you will need to clone the `step1` tag of the `workshop` branch of the repository on Github.
+
+```bash
+git clone 
+```
+> [!NOTE] 
+> After cloning the repository, navigate to the project directory and install the dependencies  using NPM. We are using version 19.2 of Angular that is not part of the peer dependencies for our Nx CLI so we need to use `--legacy-peer-deps` to install the dependencies.
+
+```bash
+npm install --legacy-peer-deps
+```
