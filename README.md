@@ -112,4 +112,28 @@ You will notice that there are a few options that we passed to the `rxResource`:
 > } @else {
 >   ...
 > } 
-```
+> ```
+> We also added resources to the class:
+> ```typescript
+> readonly #swapiService = inject(SwapiService);
+>
+> protected personId = signal('1');
+> protected personResource = this.#swapiService.peopleResource(this.personId);
+>
+> protected currentMerc = computed(() => {
+> const value = this.personResource.value();
+>
+>    return value ? value : emptyPerson();
+> });
+> ```
+
+With a `resource`, we can load a new value by changing the signal that comes in. We can make the `Hire` and `Skip` buttons work by changing the `personId` signal.
+
+### Task:
+1. Add code to the click event of the `Hire` button to change the `personId` signal to a new value.
+2. Add code to the click event of the `Skip` button to change the `personId` signal to a new value.
+
+> [!TIP]
+> We  included a class to give random IDs for people from the Star Wars API. It is called `merc.service.ts` and includes a function called `getMercs()` that returns an iterator.
+> 
+> It is an `@Injectable()` service so you can use it like a normal Angular service.
