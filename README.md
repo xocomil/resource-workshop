@@ -130,10 +130,28 @@ You will notice that there are a few options that we passed to the `rxResource`:
 With a `resource`, we can load a new value by changing the signal that comes in. We can make the `Hire` and `Skip` buttons work by changing the `personId` signal.
 
 ### Task:
-1. Add code to the click event of the `Hire` button to change the `personId` signal to a new value.
-2. Add code to the click event of the `Skip` button to change the `personId` signal to a new value.
+1. Add code to `nextMerc()` handler of `merc-choice.component.ts` to get a random mercenary from the Star Wars API when it is called.
 
 > [!TIP]
 > We  included a class to give random IDs for people from the Star Wars API. It is called `merc.service.ts` and includes a function called `getMercs()` that returns an iterator.
 > 
 > It is an `@Injectable()` service so you can use it like a normal Angular service.
+
+## Step 4: Make it all work!
+
+> [!NOTE]
+> Let's review what we changed. We added the the `MercService` and iterator to our component.
+> ```typescript
+> readonly #mercService = inject(MercService);
+> readonly #mercOrder = this.#mercService.getMercs();
+> ```
+> Then we added code to `nextMerc()` to use the service to update our resource:
+> ```typescript
+> protected nextMerc() {
+>    const next = this.#mercOrder.next().value;
+>
+>    if (next) {
+>      this.personId.set(next.toString());
+>    }
+> }
+> ```
