@@ -155,3 +155,13 @@ With a `resource`, we can load a new value by changing the signal that comes in.
 >    }
 > }
 > ```
+
+We added a special `resource` to the project to allow interactions with the list of hired mercs. This resource isn't based on HTTP or observables and is an example of how you can create resources to manage state in your application. The `resource` is located in `services/team.ng.ts`.
+
+We can use this service to add mercs to the team. The remove function is part of the other component.
+
+### Task:
+1. Make the `Hire` button work by adding a merc to the team using the `TeamResource` in `merc-choice.component.ts`.
+
+> [!TIP]
+> You can use the `addTeamMember()` of the `TeamResource` to add a merc to the team.
