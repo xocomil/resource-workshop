@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { emptyPerson } from '../../models/person.model';
+import { MercService } from '../../services/merc.service';
 import { SwapiService } from '../../services/swapi.service';
 import { MercDetailsComponent } from '../merc-details/merc-details.ng';
 
@@ -39,6 +40,8 @@ import { MercDetailsComponent } from '../merc-details/merc-details.ng';
 })
 export class MercChoiceComponent {
   readonly #swapiService = inject(SwapiService);
+  readonly #mercService = inject(MercService);
+  readonly #mercOrder = this.#mercService.getMercs();
 
   protected personId = signal('1');
   protected personResource = this.#swapiService.peopleResource(this.personId);
@@ -56,7 +59,11 @@ export class MercChoiceComponent {
   }
 
   protected nextMerc() {
-    console.log('Next merc');
+    const next = this.#mercOrder.next().value;
+
+    if (next) {
+      this.personId.set(next.toString());
+    }
   }
 
   protected hireMerc() {
