@@ -101,3 +101,15 @@ You will notice that there are a few options that we passed to the `rxResource`:
 > You can use the `isLoading` signal from the resource to display a loading experience.
 > 
 > You can also use the `value` signal from the resource to display the person from the Star Wars API.
+
+## Step 3: Make the Hire and Skip buttons work
+
+> [!NOTE]
+> Let's review what we changed. First, we added a loading experience using the flow control statement `@if`:
+> ```html 
+> @if (personResource.isLoading()) {
+>   <div>Loading...</div>
+> } @else {
+>   ...
+> } 
+```
