@@ -91,13 +91,13 @@ You will notice that there are a few options that we passed to the `rxResource`:
 - `loader` <strong>(required)<strong>: A required function that returns an observable. This is the function that will be called when the resource is loaded.
 - `defaultValue` <strong>(optional)<strong>: An optional default value for the resource. This is useful when you don't want your resource to potentially return `undefined`.
 
-####Task:
+###Task:
 
 1. Create the `resource` and `rxResource` in `swapi.service.ts` and return them from the `peopleResource()` and `rxPeopleResource()` functions.
 2. Use either the `resource` or `rxResource` in the `merc-choice.component.ts` to display a person from the Star Wars API.
 3. <i>Bonus:</i> Use the resource of your choice to display a loading experience.
 
-> [HINT!]
+> [TIP!]
 > You can use the `isLoading` signal from the resource to display a loading experience.
 > 
 > You can also use the `value` signal from the resource to display the person from the Star Wars API.
