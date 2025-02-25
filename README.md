@@ -35,7 +35,7 @@ npx nx serve
 To get started with the workshop, you will need to clone the `step1` tag of the `workshop` branch of the repository on Github.
 
 ```bash
-git clone 
+git clone https://github.com/xocomil/resource-workshop.git --branch workshop
 ```
 > [!NOTE] 
 > After cloning the repository, navigate to the project directory and install the dependencies  using NPM. We are using version 19.2 of Angular that is not part of the peer dependencies for our Nx CLI so we need to use `--legacy-peer-deps` to install the dependencies.
@@ -43,3 +43,14 @@ git clone
 ```bash
 npm install --legacy-peer-deps
 ```
+
+Once the dependencies are installed, you can run the project using the following command:
+
+```bash
+npx nx serve
+```
+
+You will note that the buttons and project are in a default state and don't do anything.
+
+### Step 2: Add a `resource` to get people from the Star Wars API
+
