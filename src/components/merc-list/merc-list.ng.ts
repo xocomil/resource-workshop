@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Person } from '../../models/person.model';
+import { TeamResource } from '../../services/team.ng';
 import { MercCardComponent } from './merc-card.ng';
 
 @Component({
   selector: 'app-merc-list',
   imports: [CommonModule, MercCardComponent],
   template: `
-    @for (merc of mercs(); track merc.id) {
+    @for (merc of mercsResource.value(); track merc.id) {
       @defer {
         <app-merc-card [merc]="merc" (deleteMerc)="handleDeleteMerc($event)" />
       }
@@ -29,17 +29,18 @@ import { MercCardComponent } from './merc-card.ng';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MercListComponent {
-  protected readonly mercs = signal<Person[]>([]);
+  readonly #team = inject(TeamResource);
+  protected readonly mercsResource = this.#team.team;
 
   protected get totalCost() {
-    return signal(0);
+    return this.#team.totalCost;
   }
 
   protected handleDeleteMerc(id: string) {
-    console.log('Deleting merc with id:', id);
+    this.#team.deleteTeamMember(id);
   }
 
   protected hireMercs() {
-    console.log('Hiring mercs');
+    this.#team.hireTeam();
   }
 }
