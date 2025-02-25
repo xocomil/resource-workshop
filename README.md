@@ -54,3 +54,50 @@ You will note that the buttons and project are in a default state and don't do a
 
 ### Step 2: Add a `resource` to get people from the Star Wars API
 
+In the `services` directory there is a file called `swapi.service.ts`. This file contains a function that fetches people from the Star Wars API. We will use this function to get people from the API.
+
+The function uses the [HttpClient class from Angular](https://next.angular.dev/api/common/http/HttpClient#). Unfortunately, `HttpClient` doesn't provide a good loading experience or a great error handling solution. Typically, you have to write boilerplate for loading and error experiences.
+
+To solve this problem, we will use the new [resource from Angular 19.2](https://next.angular.dev/api/core/resource). The resource allows us to wrap promises and observables in a way that makes loading and errors easy requiring no boilerplate.
+
+To get started, we will create a new resource and return it from the `peopleResource()` function and from the `rxPeopleResource()` function.
+
+To create a resource from a promise, we can use the `resource` from Angular 19.2. An example is as follows:
+
+```typescript
+return resource({
+  request: () => ({ id: id() }),
+  loader: ({ request }) => firstValueFrom(this.#getPerson(request.id)),
+  defaultValue: emptyPerson(),
+});
+```
+You will notice that there are a few options that we passed to the `resource`:
+- `request` <strong>(required)<strong>: A required function that returns an object map with parameters passed to the loader function as `request`. If you use [signals](https://next.angular.dev/api/core/signal#) in your map, the resource can respond to changes and automatically reload.
+- `loader` <strong>(required)<strong>: A required function that returns a promise. This is the function that will be called when the resource is loaded.
+- `defaultValue` <strong>(optional)<strong>: An optional default value for the resource. This is useful when you don't want your resource to potentially return `undefined`.
+
+To create a resource from an observable, we can use the `rxResource` from Angular 19.2. An example is as follows:
+
+```typescript
+return rxResource({
+  request: () => ({ id: id() }),
+  loader: ({ request }) => this.#getPerson(request.id),
+  defaultValue: emptyPerson(),
+});
+
+```
+You will notice that there are a few options that we passed to the `rxResource`:
+- `request` <strong>(required)<strong>: A required function that returns an object map with parameters passed to the loader function as `request`. If you use [signals](https://next.angular.dev/api/core/signal#) in your map, the resource can respond to changes and automatically reload.
+- `loader` <strong>(required)<strong>: A required function that returns an observable. This is the function that will be called when the resource is loaded.
+- `defaultValue` <strong>(optional)<strong>: An optional default value for the resource. This is useful when you don't want your resource to potentially return `undefined`.
+
+####Task:
+
+1. Create the `resource` and `rxResource` in `swapi.service.ts` and return them from the `peopleResource()` and `rxPeopleResource()` functions.
+2. Use either the `resource` or `rxResource` in the `merc-choice.component.ts` to display a person from the Star Wars API.
+3. <i>Bonus:</i> Use the resource of your choice to display a loading experience.
+
+> [HINT!]
+> You can use the `isLoading` signal from the resource to display a loading experience.
+> 
+> You can also use the `value` signal from the resource to display the person from the Star Wars API.
